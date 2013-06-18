@@ -161,6 +161,76 @@ measurement.names.includesPattern = com.cerner.mmf.workstation.rtms.*
 					</section>
 				</section>
 				
+								<section>
+					<section>
+						<h2>MOM Configuration</h2>
+						<h6><small>Workspace and Bookmark Storage</small></h6>
+						<h6>Follow the <br><a href="https://wiki.ucern.com/display/public/reference/Configure+Media+Object+Management+Web+Services">Reference Pages</a><br>for configuration</h6>
+					</section>
+					<section style="text-align:left">
+						<h2>MOM Configuration</h2>
+						<h6><small>Workspace and Bookmark Storage</small></h6>
+						<p>
+							Media Object Manager (MOM) must be configured for SkyVue to correctly store and retrieve Workspaces and Bookmarks. Each storage type needs an associated 
+							<code>Content Type</code> to be defined. <br><br>
+							The <a href="https://wiki.ucern.com/display/public/reference/Configure+Media+Object+Management+Web+Services">Reference Pages</a> list how to setup the
+							content Type for both <a href="https://wiki.ucern.com/display/public/reference/Configure+Cerner+SkyVue+Workspace+Storage">Workspaces</a>
+							 and <a href="https://wiki.ucern.com/display/reference/Configure+Cerner+SkyVue+Bookmark+Storage">Bookmarks</a>.
+						</p>
+					</section>
+					
+					<section style="text-align:left">
+						<h2>MOM Configuration</h2>
+						<h6><small>Workspace and Bookmark Storage</small></h6>
+						<h6>Ensure the Millennium domain is in DNS</h6><br>
+					</section>
+					
+					<section style="text-align:left" data-state="alert" data-transition="concave">
+						<h2>MOM Configuration</h2>
+						<h6><small>Workspace and Bookmark Storage</small></h6>
+						<h6>Ensure the Millennium domain is in DNS</h6><br>
+						<p>
+							If the CAMM archive cannot resolve the Millennium domain, then storage and retrieval will fail. To test if the Millennium domain is resolvable, run the 
+							<code>nslookup</code> and <code>dig</code>
+							commands on the CAMM node in question.</p>
+					</section>
+					
+					<section style="text-align:left">
+						<h2>MOM Configuration</h2>
+						<h6><small>Workspace and Bookmark Storage</small></h6>
+						<h6>Ensure the Millennium domain is in DNS</h6><br>
+						<p>
+							If the CAMM archive cannot resolve the Millennium domain, then storage and retrieval will fail. To test if the Millennium domain is resolvable, run the 
+							<code>nslookup</code> and <code>dig</code>
+							commands on the CAMM node in question.</p>
+							<pre><code>
+nslookup -queryType=SRV _cerner_&lt;DOMAIN&gt;_mqclient._tcp
+							</code>
+							<code class="fragment">
+dig _cerner_&lt;DOMAIN&gt;_mqclient._tcp.&lt;DNS_SUFFIX&gt; SRV
+							</code>
+							<code class="fragment">
+;&lt;&lt;&gt;&gt; DiG 9.3.6-P1-RedHat-9.3.6-4.P1.el5_4.2 &lt;&lt;&gt;&gt; _cerner_pacs719_mqclient._tcp.northamerica.cerner.net SRV
+;; global options:  printcmd
+;; Got answer:
+;; -&gt;&gt;HEADER&lt;&lt;- opcode: QUERY, status: NOERROR, id: 34437
+;; flags: qr aa rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 0
+
+;; QUESTION SECTION:
+;_cerner_pacs719_mqclient._tcp.northamerica.cerner.net. IN SRV
+
+;; ANSWER SECTION:
+_cerner_pacs719_mqclient._tcp.northamerica.cerner.net. 3600 IN SRV 0 0 1414 ippacs1.
+
+;; Query time: 0 msec
+;; SERVER: 10.160.12.70#53(10.160.12.70)
+;; WHEN: Wed Feb 23 09:00:27 2011
+;; MSG SIZE  rcvd: 98
+							</code>
+							</pre>
+					</section>
+				</section>
+				
 				<section>
 					<section>
 						<h2>Debugging</h2>
@@ -287,76 +357,6 @@ splash.bmp
 						<p>
 							Remove the <code>-debug</code> parameter from the <code>skyvue.ini</code> when you're done, as the log will fill up quickly and use additional resources.
 						</p>
-					</section>
-				</section>
-
-				<section>
-					<section>
-						<h2>MOM Configuration</h2>
-						<h6><small>Workspace and Bookmark Storage</small></h6>
-						<h6>Follow the <br><a href="https://wiki.ucern.com/display/public/reference/Configure+Media+Object+Management+Web+Services">Reference Pages</a><br>for configuration</h6>
-					</section>
-					<section style="text-align:left">
-						<h2>MOM Configuration</h2>
-						<h6><small>Workspace and Bookmark Storage</small></h6>
-						<p>
-							Media Object Manager (MOM) must be configured for SkyVue to correctly store and retrieve Workspaces and Bookmarks. Each storage type needs an associated 
-							<code>Content Type</code> to be defined. <br><br>
-							The <a href="https://wiki.ucern.com/display/public/reference/Configure+Media+Object+Management+Web+Services">Reference Pages</a> list how to setup the
-							content Type for both <a href="https://wiki.ucern.com/display/public/reference/Configure+Cerner+SkyVue+Workspace+Storage">Workspaces</a>
-							 and <a href="https://wiki.ucern.com/display/reference/Configure+Cerner+SkyVue+Bookmark+Storage">Bookmarks</a>.
-						</p>
-					</section>
-					
-					<section style="text-align:left">
-						<h2>MOM Configuration</h2>
-						<h6><small>Workspace and Bookmark Storage</small></h6>
-						<h6>Ensure the Millennium domain is in DNS</h6><br>
-					</section>
-					
-					<section style="text-align:left" data-state="alert" data-transition="concave">
-						<h2>MOM Configuration</h2>
-						<h6><small>Workspace and Bookmark Storage</small></h6>
-						<h6>Ensure the Millennium domain is in DNS</h6><br>
-						<p>
-							If the CAMM archive cannot resolve the Millennium domain, then storage and retrieval will fail. To test if the Millennium domain is resolvable, run the 
-							<code>nslookup</code> and <code>dig</code>
-							commands on the CAMM node in question.</p>
-					</section>
-					
-					<section style="text-align:left">
-						<h2>MOM Configuration</h2>
-						<h6><small>Workspace and Bookmark Storage</small></h6>
-						<h6>Ensure the Millennium domain is in DNS</h6><br>
-						<p>
-							If the CAMM archive cannot resolve the Millennium domain, then storage and retrieval will fail. To test if the Millennium domain is resolvable, run the 
-							<code>nslookup</code> and <code>dig</code>
-							commands on the CAMM node in question.</p>
-							<pre><code>
-nslookup -queryType=SRV _cerner_&lt;DOMAIN&gt;_mqclient._tcp
-							</code>
-							<code class="fragment">
-dig _cerner_&lt;DOMAIN&gt;_mqclient._tcp.&lt;DNS_SUFFIX&gt; SRV
-							</code>
-							<code class="fragment">
-;&lt;&lt;&gt;&gt; DiG 9.3.6-P1-RedHat-9.3.6-4.P1.el5_4.2 &lt;&lt;&gt;&gt; _cerner_pacs719_mqclient._tcp.northamerica.cerner.net SRV
-;; global options:  printcmd
-;; Got answer:
-;; -&gt;&gt;HEADER&lt;&lt;- opcode: QUERY, status: NOERROR, id: 34437
-;; flags: qr aa rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 0
-
-;; QUESTION SECTION:
-;_cerner_pacs719_mqclient._tcp.northamerica.cerner.net. IN SRV
-
-;; ANSWER SECTION:
-_cerner_pacs719_mqclient._tcp.northamerica.cerner.net. 3600 IN SRV 0 0 1414 ippacs1.
-
-;; Query time: 0 msec
-;; SERVER: 10.160.12.70#53(10.160.12.70)
-;; WHEN: Wed Feb 23 09:00:27 2011
-;; MSG SIZE  rcvd: 98
-							</code>
-							</pre>
 					</section>
 				</section>
 				
